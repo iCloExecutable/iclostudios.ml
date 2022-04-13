@@ -1,0 +1,129 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>BlackClock</title>
+<style type="text/css">
+
+@font-face { font-family: dgm; src: url('./neodgm.ttf'); }
+h1 { font-family: dgm; color: #ffffff}
+p { font-family: dgm; color: #ffffff}
+a:hover { font-family: dgm; color: #ffffff}
+a { font-family: dgm; color: #000000}
+
+a {
+    animation: change 1s step-end both;
+}
+
+@keyframes change {
+    from { color: white }
+    to   { color: }
+}
+
+
+</style> 
+</head>
+
+<body bgcolor="#000000">
+<a style='font-size: 1.5em;' id="exitbtn" href="../">Anytime you want to exit, click me!!</a>
+&nbsp;
+<a style='font-size: 1.5em;' id="fsbtn" onclick="openFullscreen(); closeFullscreen();" href="#">And for FullScreen toggle, me!!</a>
+&nbsp;
+<a style='font-size: 1.5em;' id="chth" href="./white.html">To change the theme, me!</a>
+<p style='font-size: 2em;' id="nojs">It seems like JS isn't enabled. The software runs on the client side, so it needs JS to be enabled. Please try again. If you have JS enabled and is still seeing this message, please try reloading and if the error persists, it may be an issue of your browser or your network connection.</p>
+
+<script>
+document.getElementById("nojs").innerHTML = ""
+setTimeout(() => {  document.getElementById("exitbtn").innerHTML = "[ Exit-Clock ! ]"; }, 1010);
+setTimeout(() => {  document.getElementById("fsbtn").innerHTML = "[ FullScreen-Toggle ! ]"; }, 1010);
+setTimeout(() => {  document.getElementById("chth").innerHTML = "[ Theme-Changer ! ]"; }, 1010);
+</script>
+
+<script>
+var elem = document.documentElement;
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+}
+
+function closeFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) { /* Safari */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* IE11 */
+    document.msExitFullscreen();
+  }
+}
+</script>
+
+<center><h1 id="fclock" style='font-size: 7em;'>Mint Chocolate is the best chocolate in the world lol</h1></center>
+<center><h1 style='font-size: 2.3em;'><p id="dClock1">Present day, present time. Eh? You seeing this? You don't live in present time;;;; Gua bi;;</p><p id="hirand">Our time will always be forever ...</p></h1></center>
+<!-- 20ㅇㅇ년 ㅇㅇ월 ㅇㅇ일 - 좋은 하루 보내세요! -->
+
+<script>
+var fc = document.getElementById('fclock');
+var dc1 = document.getElementById('dClock1');
+function times() {
+  var ds = new Date();
+  var ss = ds.getSeconds();
+  var ms = ds.getMinutes();
+  var hs = ds.getHours();
+  var year = ds.getFullYear();
+  var month = ("0" + (1 + ds.getMonth())).slice(-2);
+  var day = ("0" + ds.getDate()).slice(-2);
+  var milse = ds.getMilliseconds();
+  fc.textContent = 
+    ("0" + hs).substr(-2) + ":" + ("0" + ms).substr(-2) + ":" + ("0" + ss).substr(-2) + "." + milse;
+  dc1.textContent = year + " / " + month + " / " + day;
+
+}
+setInterval(times, 10);
+</script>
+
+<!--id milse for miliseconds -->
+<!--
+<script>
+function milse() {
+  var dts = new Date();
+  document.getElementById("milse").innerHTML = ":" + dts.getMilliseconds();
+}
+setInterval(milse,1);
+</script>
+-->
+<script>
+const hise = [
+  {
+    "hi": "Have a nice day!"
+  },
+  {
+    "hi": "Drive safely!"
+  },
+  { 
+    "hi": "Have a lucky day!"
+  },
+  {
+    "hi": "Live safely!"
+  },
+  {
+    "hi": "Wear your face masks!!"
+  },
+  {
+    "hi": "Wash your hands properly!!"
+  },
+  {
+    "hi": "^^; ~~"
+  },
+]
+
+function randomHi(){
+  let random = hise[Math.floor(Math.random() * hise.length)];
+  hirand.innerText = `${random.hi}`;
+}
+
+setInterval(randomHi, 2000);
+</script>
